@@ -1,0 +1,87 @@
+Drop database if exists Theatre_Management_System  ;
+
+Create database Theatre_Management_System;
+
+use Theatre_Management_System;
+
+create table movie
+(
+  s_no int(50),
+  Movie_Code Varchar(10) primary key,
+  Name varchar(50) not null,
+  Sequel varchar(25),
+  Director Varchar(25),
+  Publisher varchar(25),
+  Duration Varchar(10)
+);
+
+insert into movie values
+(1,'AC01','Avengers 1','1','Joss Whedon','Marvel Comics','2:30'),
+(2,'AC02','Avengers 2','2','Joss Whedon','Marvel Comics','2:24'),
+(3,'AC03','SpiderMan 1','1','Sam Raimi','Marvel Comics','2:15'),
+(4,'AC04','Die Hard 3','3','John McTiernan','Kings Bookshop Callander','2:15'),
+(5,'AC05','SpiderMan 2','2','Sam Raimi','Marvel Comics','2:15'),
+(6,'LS01','Titanic','1','James Cameron','DK Publishing','2:37'),
+(7,'LS02','You have got a mail','1','Nora Ephron','Jane Friedman','2:20'),
+(8,'LS03','Wall-E','1','Andrew Stanton','Funko POP Disney','2:17'),
+(9,'LS04','The Proposal','1','Anne Fletcher','Jane Friedman','2:40'),
+(10,'AD01','X-Men Days of Future Past','5','Bryan Singer','Marvel Comics','2:10'),
+(11,'AD02','Pirates of carribean','1','Rob Marshal',' Disney Editions','2:20'),
+(12,'AD03','The Lord of the Rings','2','Peter Jackson','J.R.R. Tolkien','1:55'),
+(13,'AD04','Life of Pie','1','Ang Lee','Random House of Canada','2:18'),
+(14,'AD05','Harry Potter-Goblet of fire','5','Mike Newel','J.K.','2:15'),
+(15,'AD06','Harry Potter Half blood Prince','4','J.k.Rowling','J.K.','2:10'),
+(16,'H01','Insidious','1','James Wan','D.V. Chitaley','2:40'),
+(17,'H02','Insidius 2','2','James Wan','D.V. Chitaley','2:20'),
+(18,'H03','Conjuring','1','James Wan','Trevor H. Hall','2:24'),
+(19,'H04','Sinister','1','Scott Derrickson','Grin Press','2:18'),
+(20,'H05','The Uninvited','1',' Thomas Guard','Harbour Publishing','2:09'),
+(21,'AN01','Ice Age-The Meltdown','1','Carlos Sandalha','Activision Publishing','2:30'),
+(22,'AN02','Ice Age-Continental Drift','4','Carlos Sandalha','Activision Publishing','2:40'),
+(23,'AN03','Kung Fu Panda 1','1','Mark Osborne','DK Publishing','2:18'),
+(24,'AN04','Kung Fu Panda 2','2','Mark Osborne','DK Publishing','2:10'),
+(25,'C01','The Hangover','1','Todd Phillips','Activision Publishing','2:10'),
+(26,'C02','Dumb and Dumber','2',' Peter Farrelly','DK Publishing','2:18'),
+(27,'C03','Knocked Up','1','Judd Apatow','Activision Publishing','2:24'),
+(28,'C04','Home','2','Tim Johnson','DK Publishing','2:18');
+
+SELECT * FROM MOVIE;
+
+create table user_info
+(  username varchar(25) primary key,
+  password varchar(25) not null,
+  Phone_no varchar(10),
+  gender varchar(10),
+  email_Id varchar(50),
+  DOB date
+);
+
+insert into user_info values
+('Harsh','Tiwari','8899258440','Male','Harsh.talent1997@gmail.com','1997-11-02'),
+('Mayank','Shrivastava','9895063670','Male','mayank.talent1998@gmail.com','1998-07-21');
+
+create table Admin_info
+(  Admin_name varchar(25) primary key,
+  password varchar(25) not null,
+  Phone_no varchar(10),
+  gender varchar(10),
+  email_Id varchar(50),
+  DOB date
+);
+insert into Admin_info values
+
+('Harsh','Tiwari','8899258440','Male','harsh.talent1998@gmail.com','1998-06-26'),
+('Mayank','Shrivastava','9895063670','Male','mayank.talent1998@gmail.com','1998-07-21');
+
+create table movie_Purchases
+(  
+  
+   username varchar(25),
+   Movie varchar(25) not null,
+   type varchar(20),
+   price varchar(5),
+
+    foreign key(username)references user_info(username)on update cascade on delete restrict
+);
+insert into movie_purchases values
+('Harsh','Conjuring','Horror',240);
